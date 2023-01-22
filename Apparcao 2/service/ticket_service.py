@@ -44,6 +44,7 @@ def cerrar_ticket(parking, matricula, id_plaza, pin):
             ticket.fecha_salida = datetime.now()
             tiempo = ticket.fecha_salida - ticket.fecha_entrada
             ticket.factura = round(int(tiempo.seconds / 60) * ticket.plaza.precio)
+            ticket.plaza.ocupada = False
             parking.tickets.remove(ticket)
             parking.tickets.append(ticket)
             print(f"\n\t✓Puede retirar su vehiculo: {ticket.vehiculo.tipo_vehiculo} - {ticket.vehiculo.matricula}.")

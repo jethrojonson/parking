@@ -4,6 +4,7 @@ from service.ticket_service import *
 from service.abono_service import *
 from view.view import *
 
+
 try:
     parking = cargar_parking()
 except OSError:
@@ -36,8 +37,10 @@ while not salir:
                     # Caso 1.1 - Depositar Abonado
 
                     if opcion == 1:
-                        pass
-
+                        matricula = input("\n\tIntroduzca su matrícula: ")
+                        dni = input("\n\tIntroduzca su DNI: ")
+                        parking = depositar_vehiculo(parking, matricula, dni)
+                        guardar_parking(parking)
                     # Caso 1.2 - Depositar Normal
 
                     elif opcion == 2:
@@ -107,7 +110,10 @@ while not salir:
                     # Caso 2.1 Retirar Abonado
 
                     if opcion == 1:
-                        pass
+                        matricula = input("\n\tIntroduzca su matrícula: ")
+                        plaza_id = input("\n\tIntroduzca su el ID de su plaza: ")
+                        parking = retirar_vehiculo(parking, matricula, plaza_id)
+                        guardar_parking(parking)
 
                     # Caso 2.2 Retirar Normal
 
@@ -182,7 +188,10 @@ while not salir:
                     # Caso 3.2 - Facturación
 
                     elif opcion == 2:
-                        pass
+
+                        fecha1 = input("Introduca fecha de partida: ")
+                        fecha2 = input("Introduca fecha final: ")
+                        consultar_facturacion(parking, fecha1, fecha2)
 
                     # Caso 3.3 - Consulta abonados
 
@@ -446,12 +455,14 @@ while not salir:
                                 # 3.4.2 - Baja abonados
 
                                 elif opcion == 2:
-                                    pass
+                                    parking = dar_de_baja(parking, input("Introduzca DNI: "))
+                                    guardar_parking(parking)
 
                                 # 3.4.3 - Modificación abonados
 
                                 elif opcion == 3:
-                                    pass
+                                    dni = input("Introduzca DNI: ")
+                                    parking = modificar_abonado(parking, dni)
 
                                 # 3.4.0 - Volver
 

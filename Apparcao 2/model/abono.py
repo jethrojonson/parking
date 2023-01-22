@@ -1,4 +1,5 @@
 from datetime import datetime
+from random import randint
 
 
 class Abono:
@@ -15,6 +16,7 @@ class Abono:
         self.__email = email
         self.__plaza = plaza
         self.__vehiculo = vehiculo
+        self.__pin = randint(100000, 999999)
 
     @property
     def tipo_abono(self):
@@ -42,7 +44,7 @@ class Abono:
 
     @property
     def fecha_activacion(self):
-        return self.__fecha_activacion
+        return self.__fecha_activacion.strftime("%d/%m/%Y")
 
     @fecha_activacion.setter
     def fecha_activacion(self, fecha_activacion):
@@ -112,5 +114,17 @@ class Abono:
     def vehiculo(self, vehiculo):
         self.__vehiculo = vehiculo
 
+    @property
+    def pin(self):
+        return self.__pin
+
+    @pin.setter
+    def pin(self, pin):
+        self.__pin = pin
+
+
+
     def __str__(self):
-        return f"DNI: {self.dni} Subscripcion: {self.fecha_activacion} - {self.fecha_cancelacion} | Pagado: {self.precio}"
+        return f"\nDNI: {self.dni} Subscripcion: {self.fecha_activacion} - " \
+               f"{self.fecha_cancelacion} | Pagado: {self.precio} €\n" \
+               f"PIN ACCESO: {str(self.pin)}"

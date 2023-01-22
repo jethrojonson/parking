@@ -173,3 +173,5 @@ def mostrar_abonos_pagados(parking):
     saludo2()
     for a in parking.abonados:
         print(a)
+    print(f"\n\tFacturación abonados total = {parking.facturacion}")
+

@@ -1,8 +1,9 @@
 class Parking:
-    def __init__(self, plazas=[], tickets=[], abonados=[]):
+    def __init__(self, plazas=[], tickets=[], abonados=[], facturacion = 0):
         self.__plazas = plazas
         self.__tickets = tickets
         self.__abonados = abonados
+        self.__facturacion = facturacion
 
     @property
     def plazas(self):
@@ -27,3 +28,11 @@ class Parking:
     @abonados.setter
     def abonados(self, abonados):
         self.__abonados = abonados
+
+    @property
+    def facturacion(self):
+        return self.__facturacion
+
+    @facturacion.setter
+    def facturacion(self, facturacion):
+        self.__facturacion = facturacion
